@@ -32,6 +32,8 @@ export default class Main extends Component {
       .find(field => field.attributes.field_type === 'slug');
     if (slugField) {
       const fieldPath = slugField.attributes.api_key;
+
+      console.log(slugField, plugin.getFieldValue(fieldPath));
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),
@@ -64,13 +66,12 @@ export default class Main extends Component {
     const { initalValue, contentSlug } = this.state;
 
     console.log(contentSlug);
-    const safeSlug = typeof contentSlug === 'object' ? `${contentSlug['en-AU']}` : `${contentSlug}`;
     return (
       <div className="container">
         <h1>Gatsby Cloud</h1>
 
         <ExtensionUI
-          contentSlug={safeSlug || initalValue}
+          contentSlug={contentSlug['en-AU'] || initalValue['en-AU'] || ''}
           previewUrl={instanceUrl}
           authToken={authToken}
         />
