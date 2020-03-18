@@ -32,11 +32,16 @@ export default class Main extends Component {
       .find(field => field.attributes.field_type === 'slug');
     if (slugField) {
       const fieldPath = slugField.attributes.api_key;
+
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),
       });
-      this.unsubscribe = plugin.addFieldChangeListener(fieldPath, this.slugChange);
+
+      this.unsubscribe = plugin.addFieldChangeListener(
+        fieldPath,
+        this.slugChange,
+      );
     }
   }
 
@@ -53,24 +58,45 @@ export default class Main extends Component {
     });
   }
 
-
   render() {
     const { plugin } = this.props;
     const {
       parameters: {
-        global: { instanceUrl, authToken },
+        global: { instanceUrl, authToken, multiLang },
       },
     } = plugin;
+
+    const multiLangConfig = JSON.parse(plugin.parameters.global.languageConfig);
+
     const { initalValue, contentSlug } = this.state;
 
     return (
       <div className="container">
         <h1>Gatsby Cloud</h1>
-        <ExtensionUI
-          contentSlug={contentSlug || initalValue}
-          previewUrl={instanceUrl}
-          authToken={authToken}
-        />
+        {multiLang ? (
+          multiLangConfig.map(site => (
+            <>
+              <h4>{site.languange}</h4>
+              <ExtensionUI
+                contentSlug={
+                  contentSlug[site.languange]
+                  || initalValue[site.languange]
+                  || ''
+                }
+                previewUrl={site.instanceUrl}
+                authToken={site.authToken}
+              />
+            </>
+          ))
+        ) : (
+          <ExtensionUI
+            contentSlug={
+              contentSlug[plugin.locale] || initalValue[plugin.locale] || ''
+            }
+            previewUrl={instanceUrl}
+            authToken={authToken}
+          />
+        )}
       </div>
     );
   }

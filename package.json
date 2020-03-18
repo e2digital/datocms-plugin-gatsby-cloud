@@ -27,7 +27,7 @@
   "author": "Rizchel Wood <rizchel@gatsbyjs.com>",
   "license": "ISC",
   "datoCmsPlugin": {
-    "title": "Gatsby Cloud",
+    "title": "Custom Gatsby Cloud by HC",
     "previewImage": "docs/preview.gif",
     "coverImage": "docs/cover.png",
     "entryPoint": "dist/index.html",
@@ -60,6 +60,21 @@
           "required": false,
           "default": false,
           "hint": "The authentication token for a private Gatsby Cloud instance"
+        },
+        {
+          "id": "multiLang",
+          "label": "Multi Languange mode",
+          "type": "boolean",
+          "required": true,
+          "default": false,
+          "hint": "Enables to use of Languange Configuration json field"
+        },
+        {
+          "id": "languageConfig",
+          "label": "Languange Configuration",
+          "type": "json",
+          "required": false,
+          "hint": "See Documentation"
         }
       ],
       "instance": []
@@ -101,17 +116,17 @@
     "yo": "^2.0.5"
   },
   "dependencies": {
-    "@gatsby-cloud-pkg/gatsby-cms-extension-base": "^0.0.27",
+    "@gatsby-cloud-pkg/gatsby-cms-extension-base": "^0.0.42",
     "classname": "^0.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
-  "resolutions":{
+  "resolutions": {
     "eslint-utils": ">=1.4.1",
     "https-proxy-agent": ">=2.2.3",
     "lodash": ">=4.17.12",
-    "mixin-deep":">=1.3.2 <2.0.0 || >=2.0.1",
-    "set-value":">=2.0.1 <3.0.0 || >=3.0.1"
+    "mixin-deep": ">=1.3.2 <2.0.0 || >=2.0.1",
+    "set-value": ">=2.0.1 <3.0.0 || >=3.0.1"
   }
 }
