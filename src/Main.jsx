@@ -63,11 +63,14 @@ export default class Main extends Component {
     } = plugin;
     const { initalValue, contentSlug } = this.state;
 
+    console.log(contentSlug);
+    const safeSlug = typeof contentSlug === 'object' ? `${contentSlug['en-AU']}` : `${contentSlug}`;
     return (
       <div className="container">
         <h1>Gatsby Cloud</h1>
+
         <ExtensionUI
-          contentSlug={contentSlug || initalValue}
+          contentSlug={safeSlug || initalValue}
           previewUrl={instanceUrl}
           authToken={authToken}
         />
