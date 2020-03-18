@@ -101,7 +101,7 @@
     "yo": "^2.0.5"
   },
   "dependencies": {
-    "@gatsby-cloud-pkg/gatsby-cms-extension-base": "^0.0.27",
+    "@gatsby-cloud-pkg/gatsby-cms-extension-base": "^0.0.42",
     "classname": "^0.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
