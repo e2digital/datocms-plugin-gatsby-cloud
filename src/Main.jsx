@@ -76,7 +76,11 @@ export default class Main extends Component {
 
     const { initalValue, contentSlug } = this.state;
 
-    console.log(contentSlug);
+    console.log(
+      `plugin.locale: ${plugin.locale}`,
+      `multiLang: ${multiLang}`,
+      `contentSlug: ${contentSlug}`,
+    );
     return (
       <div className="container">
         <h1>Gatsby Cloud</h1>
