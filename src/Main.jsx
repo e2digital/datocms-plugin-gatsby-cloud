@@ -33,7 +33,7 @@ export default class Main extends Component {
     if (slugField) {
       const fieldPath = slugField.attributes.api_key;
 
-      console.log(slugField, plugin.getFieldValue(fieldPath));
+      console.log(plugin, plugin.locale, plugin.parameters.global,slugField, plugin.getFieldValue(fieldPath));
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),

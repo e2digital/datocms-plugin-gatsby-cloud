@@ -60,6 +60,21 @@
           "required": false,
           "default": false,
           "hint": "The authentication token for a private Gatsby Cloud instance"
+        },
+        {
+          "id": "mutliLang",
+          "label": "Multi Languange mode",
+          "type": "boolean",
+          "required": true,
+          "default": false,
+          "hint": "Enables to use of Languange Configuration json field"
+        },
+        {
+          "id": "languageConfig",
+          "label": "Languange Configuration",
+          "type": "json",
+          "required": false,
+          "default": `{"en-AU": {"instanceUrl": "https://example.gtsb.io". "authToken": "token~"},"en-NZ":{"instanceUrl": "https://example.gtsb.io". "authToken": "token~"}}`
         }
       ],
       "instance": []
