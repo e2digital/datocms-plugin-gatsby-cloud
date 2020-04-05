@@ -68,9 +68,12 @@ export default class Main extends Component {
     const { plugin } = this.props;
     const {
       parameters: {
-        global: { instanceUrl, authToken },
+        global: { instanceUrl, authToken, multiLang },
       },
     } = plugin;
+
+    const multiLangConfig = JSON.parse(plugin.parameters.global.languageConfig);
+
     const { initalValue, contentSlug } = this.state;
 
     console.log(contentSlug);
@@ -79,9 +82,15 @@ export default class Main extends Component {
         <h1>Gatsby Cloud</h1>
 
         <ExtensionUI
-          contentSlug={contentSlug['en-AU'] || initalValue['en-AU'] || ''}
-          previewUrl={instanceUrl}
-          authToken={authToken}
+          contentSlug={
+            contentSlug[plugin.locale] || initalValue[plugin.locale] || ''
+          }
+          previewUrl={
+            multiLang ? multiLangConfig[plugin.locale].instanceUrl : instanceUrl
+          }
+          authToken={
+            multiLang ? multiLangConfig[plugin.locale].authToken : authToken
+          }
         />
       </div>
     );
