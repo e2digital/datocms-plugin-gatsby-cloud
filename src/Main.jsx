@@ -33,12 +33,21 @@ export default class Main extends Component {
     if (slugField) {
       const fieldPath = slugField.attributes.api_key;
 
-      console.log(plugin, plugin.locale, plugin.parameters.global,slugField, plugin.getFieldValue(fieldPath));
+      console.log(
+        plugin,
+        plugin.locale,
+        plugin.parameters.global,
+        slugField,
+        plugin.getFieldValue(fieldPath),
+      );
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),
       });
-      this.unsubscribe = plugin.addFieldChangeListener(fieldPath, this.slugChange);
+      this.unsubscribe = plugin.addFieldChangeListener(
+        fieldPath,
+        this.slugChange,
+      );
     }
   }
 
@@ -54,7 +63,6 @@ export default class Main extends Component {
       contentSlug: newValue,
     });
   }
-
 
   render() {
     const { plugin } = this.props;

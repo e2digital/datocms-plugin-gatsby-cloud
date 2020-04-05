@@ -27,7 +27,7 @@
   "author": "Rizchel Wood <rizchel@gatsbyjs.com>",
   "license": "ISC",
   "datoCmsPlugin": {
-    "title": "Gatsby Cloud",
+    "title": "Custom Gatsby Cloud by HC",
     "previewImage": "docs/preview.gif",
     "coverImage": "docs/cover.png",
     "entryPoint": "dist/index.html",
@@ -62,7 +62,7 @@
           "hint": "The authentication token for a private Gatsby Cloud instance"
         },
         {
-          "id": "mutliLang",
+          "id": "multiLang",
           "label": "Multi Languange mode",
           "type": "boolean",
           "required": true,
@@ -74,7 +74,7 @@
           "label": "Languange Configuration",
           "type": "json",
           "required": false,
-          "default": `{"en-AU": {"instanceUrl": "https://example.gtsb.io". "authToken": "token~"},"en-NZ":{"instanceUrl": "https://example.gtsb.io". "authToken": "token~"}}`
+          "hint": "See Documentation"
         }
       ],
       "instance": []
