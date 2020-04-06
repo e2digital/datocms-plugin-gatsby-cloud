@@ -59,6 +59,7 @@ export default class Main extends Component {
   }
 
   slugChange(newValue) {
+    console.log(`change: ${newValue}`);
     this.setState({
       contentSlug: newValue,
     });
