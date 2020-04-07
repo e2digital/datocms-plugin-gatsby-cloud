@@ -40,6 +40,7 @@ export default class Main extends Component {
         slugField,
         plugin.getFieldValue(fieldPath),
       );
+
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),
@@ -82,21 +83,34 @@ export default class Main extends Component {
       `multiLang: ${multiLang}`,
       `contentSlug: ${contentSlug}`,
     );
+
     return (
       <div className="container">
         <h1>Gatsby Cloud</h1>
-
-        <ExtensionUI
-          contentSlug={
-            contentSlug[plugin.locale] || initalValue[plugin.locale] || ''
-          }
-          previewUrl={
-            multiLang ? multiLangConfig[plugin.locale].instanceUrl : instanceUrl
-          }
-          authToken={
-            multiLang ? multiLangConfig[plugin.locale].authToken : authToken
-          }
-        />
+        {multiLang ? (
+          multiLangConfig.map(site => (
+            <>
+              <h4>{site.languange}</h4>
+              <ExtensionUI
+                contentSlug={
+                  contentSlug[site.languange]
+                  || initalValue[site.languange]
+                  || ''
+                }
+                previewUrl={site.instanceUrl}
+                authToken={site.authToken}
+              />
+            </>
+          ))
+        ) : (
+          <ExtensionUI
+            contentSlug={
+              contentSlug[plugin.locale] || initalValue[plugin.locale] || ''
+            }
+            previewUrl={instanceUrl}
+            authToken={authToken}
+          />
+        )}
       </div>
     );
   }
