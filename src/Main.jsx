@@ -33,18 +33,11 @@ export default class Main extends Component {
     if (slugField) {
       const fieldPath = slugField.attributes.api_key;
 
-      console.log(
-        plugin,
-        plugin.locale,
-        plugin.parameters.global,
-        slugField,
-        plugin.getFieldValue(fieldPath),
-      );
-
       this.setState({
         slugField,
         initalValue: plugin.getFieldValue(fieldPath),
       });
+
       this.unsubscribe = plugin.addFieldChangeListener(
         fieldPath,
         this.slugChange,
@@ -60,7 +53,6 @@ export default class Main extends Component {
   }
 
   slugChange(newValue) {
-    console.log(`change: ${newValue}`);
     this.setState({
       contentSlug: newValue,
     });
@@ -77,12 +69,6 @@ export default class Main extends Component {
     const multiLangConfig = JSON.parse(plugin.parameters.global.languageConfig);
 
     const { initalValue, contentSlug } = this.state;
-
-    console.log(
-      `plugin.locale: ${plugin.locale}`,
-      `multiLang: ${multiLang}`,
-      `contentSlug: ${contentSlug}`,
-    );
 
     return (
       <div className="container">
