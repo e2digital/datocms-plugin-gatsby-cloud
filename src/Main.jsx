@@ -66,6 +66,8 @@ export default class Main extends Component {
       },
     } = plugin;
 
+    console.log(plugin);
+
     const multiLangConfig = JSON.parse(plugin.parameters.global.languageConfig);
 
     const { initalValue, contentSlug } = this.state;
